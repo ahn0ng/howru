@@ -88,6 +88,42 @@ html, body, img {
     bottom:0;
 }
 
+#goodfox {
+    position:absolute;
+    right:0;
+    left:0;
+    margin:auto;
+    bottom:0;
+    z-index: -1;
+}
+
+#lonelyfox {
+    position:absolute;
+    right:0;
+    left:0;
+    margin:auto;
+    bottom:0;
+    z-index: -2;
+}
+
+#sadfox {
+    position:absolute;
+    right:0;
+    left:0;
+    margin:auto;
+    bottom:0;
+    z-index: -3;
+}
+
+#angryfox {
+    position:absolute;
+    right:0;
+    left:0;
+    margin:auto;
+    bottom:0;
+    z-index: -4;
+}
+
 #hill {
     width:100%;
     max-width:653px;
@@ -601,6 +637,10 @@ animation-delay: 0s;
         </div>
         <img id="fox" src="img/fox.png"/>
         <img id="hill" src="img/hill.png"/>
+        <img id="goodfox" src="img/goodfox.png"/>
+        <img id="lonelyfox" src="img/lonelyfox.png"/>
+        <img id="sadfox" src="img/sadfox.png"/>
+        <img id="angryfox" src="img/angryfox.png"/>
     </div>
 
     <div class="sun hideit" id="sun">
@@ -650,7 +690,15 @@ animation-delay: 0s;
 function locateFox(){
     var hillHeight = document.getElementById("hill").height;
     var fox = document.getElementById("fox");
+    var goodfox = document.getElementById("goodfox");
+    var lonelyfox = document.getElementById("lonelyfox");
+    var sadfox = document.getElementById("sadfox");
+    var angryfox = document.getElementById("angryfox");
     fox.style.bottom = hillHeight-3+"px";
+    goodfox.style.bottom = hillHeight-3+"px";
+    lonelyfox.style.bottom = hillHeight-3+"px";
+    sadfox.style.bottom = hillHeight-3+"px";
+    angryfox.style.bottom = hillHeight-3+"px";
 }
 
 $(window).resize(function() {
@@ -670,27 +718,45 @@ function changeWeather(num){
         $('.default_bg').css('background', '#2EB5E5');
         sun.classList.remove("hideit");
         sun.classList.add("showit");
+        $("#fox").hide();
+        $("#goodfox").show();
         
     }else if(number==2){
         //let it snow!
         reset();
         $("#snow").show();
         $('.default_bg').css('background', '#A7E2EB');
+        $("#fox").hide();
+        $("#goodfox").hide();
+        $("#lonelyfox").show();
+
     }else if(number==3){
         //change the weather to a clear sky with clouds
         reset();
         $('.default_bg').css('background', '#999999');
         $("#clouds").show();
+        $("#fox").show
+
     }else if(number==4){
         //rainy
         reset();
         makeItRain();
+        $("#fox").hide();
+        $("#goodfox").hide();
+        $("#lonelyfox").hide();
+        $("#sadfox").show();
+
     }else if(number==5){
         //nothing for now
         reset();
         $("#lightning").show();
         $(".flashit").show();
         makeItRain();
+        $("#fox").hide();
+        $("#goodfox").hide();
+        $("#lonelyfox").hide();
+        $("#sadfox").hide();
+        $("#angryfox").show();
     }
 }
 
@@ -718,6 +784,9 @@ function reset(){
     $("#clouds").hide();
     $(".lightning").hide();
         $(".flashit").hide();
+    $("#fox").show();
+   
+    
     
 }
 
